@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
+    <title>Rosita Básquetbol - Juego Interactivo</title>
+    <meta name="description" content="Experiencia interactiva de básquetbol para Rosita con puzzles y mini-juegos">
+    
+    <!-- Preload de fuentes para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Phaser.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
+</head>
+<body>
+    <!-- Pantalla 1: Bienvenida -->
+    <div id="welcome-screen" class="screen active">
+        <div class="welcome-content">
+            <h1 class="welcome-title">Hola 👋<br>Bienvenida Rosita<br>🏀✨</h1>
+            
+            <!-- Animación de pelotas rebotando -->
+            <div class="basketball-animation">
+                <div class="basketball ball1">🏀</div>
+                <div class="basketball ball2">🏀</div>
+                <div class="basketball ball3">🏀</div>
+                <div class="basketball ball4">🏀</div>
+            </div>
+            
+            <button id="start-btn" class="btn btn-primary hidden">Comenzar</button>
+        </div>
+    </div>
+
+    <!-- Pantalla 2: Puzzle 4x4 -->
+    <div id="puzzle-screen" class="screen">
+        <div class="screen-header">
+            <h2>¡Arma el Puzzle! 🧩</h2>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <span id="progress-text" class="progress-text">0%</span>
+            </div>
+        </div>
+        
+        <div class="puzzle-container">
+            <div id="puzzle-grid" class="puzzle-grid"></div>
+        </div>
+        
+        <div class="puzzle-pieces-area">
+            <div id="puzzle-pieces" class="puzzle-pieces"></div>
+        </div>
+        
+        <button id="puzzle-next-btn" class="btn btn-primary hidden">Siguiente</button>
+        
+        <!-- Mensaje de éxito -->
+        <div id="puzzle-success" class="success-message hidden">
+            <div class="success-content">
+                <h3>¡Lo lograste! 🎉</h3>
+                <div class="particles"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla 3: Mini-juego Básquet -->
+    <div id="game-screen" class="screen">
+        <div class="screen-header">
+            <h2>¡A Jugar Básquet! 🏀</h2>
+            <div class="game-stats">
+                <span id="score">Puntos: 0</span>
+                <span id="attempts">Intentos: 5</span>
+            </div>
+        </div>
+        
+        <div class="game-container">
+            <div id="phaser-game"></div>
+        </div>
+        
+        <div class="game-instructions">
+            <p>Arrastra la pelota y suéltala para lanzar al aro</p>
+        </div>
+        
+        <button id="game-next-btn" class="btn btn-primary hidden">Continuar</button>
+        
+        <!-- Mensaje de punto -->
+        <div id="score-message" class="score-message hidden">¡Punto! 🏀</div>
+    </div>
+
+    <!-- Pantalla 4: Resumen y Cierre -->
+    <div id="final-screen" class="screen">
+        <div class="final-content">
+            <h2>Espero que te haya gustado<br>esta mini web 😊</h2>
+            
+            <div class="summary-card">
+                <h3>Resumen de tu juego:</h3>
+                <div class="summary-item">
+                    <span class="summary-icon">✅</span>
+                    <span>Puzzle completado</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-icon">🏀</span>
+                    <span id="final-score">Puntos obtenidos: 0/5</span>
+                </div>
+            </div>
+            
+            <div class="final-buttons">
+                <button id="restart-btn" class="btn btn-primary">Volver a jugar</button>
+                <button id="share-btn" class="btn btn-secondary">Compartir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">🏀</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="phaser-game.js"></script>
+</body>
+</html>
